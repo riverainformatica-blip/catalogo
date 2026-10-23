@@ -6,7 +6,7 @@
 <title>Casa de Empeño · Prendas a la venta</title>
 <meta name="description" content="Prendas a la venta en Casa de Empeño, 70 C FRANCISCO I MADERO.">
 <meta property="og:title" content="Casa de Empeño · Prendas a la venta">
-
+<meta property="og:image" content="https://riverainformatica-blip.github.io/catalogo/fotos/5.jpg">
 <style>
 :root { --fondo: #f6f6f3; --texto: #1f2328; --suave: #5f6670; --borde: #d9dbd6; --primario: #1f5f4a; --wa: #1f8f4e; }
 * { box-sizing: border-box; }
@@ -45,7 +45,33 @@ footer { text-align: center; color: var(--suave); font-size: .85rem; padding: 24
 </header>
 <main>
   
-  <p class="vacio">Por ahora no hay prendas publicadas. Vuelve pronto.</p>
+  <div class="filtros">
+    <input id="buscar" type="search" placeholder="Buscar…" aria-label="Buscar">
+    <button class="chip activo" data-categoria="">Todo</button>
+    <button class="chip" data-categoria="Electrónica">Electrónica</button><button class="chip" data-categoria="Oro">Oro</button><button class="chip" data-categoria="Relojes">Relojes</button>
+  </div>
+  <div class="rejilla">
+    
+    <a class="articulo" href="p/3.html" data-categoria="Electrónica"
+       data-texto="laptop hp pavilion 14 laptop hp pavilion 14, core i5, 8 gb ram, 256 gb ssd. incluye cargador. batería al 85 %.">
+      <img src="fotos/5.jpg" alt="Laptop" loading="lazy">
+      <div><b>$6,500.00</b>Laptop HP Pavilion 14<br><small>Electrónica</small></div>
+    </a>
+    
+    <a class="articulo" href="p/2.html" data-categoria="Relojes"
+       data-texto="reloj de pulso casio edifice reloj casio edifice de acero, cronógrafo, resistente al agua 100 m. funciona perfecto.">
+      <img src="fotos/3.jpg" alt="Reloj de pulso" loading="lazy">
+      <div><b>$2,200.00</b>Reloj de pulso Casio Edifice<br><small>Relojes</small></div>
+    </a>
+    
+    <a class="articulo" href="p/1.html" data-categoria="Oro"
+       data-texto="anillo de compromiso   anillo de oro amarillo 14k con circonia central. talla 6. excelente estado.">
+      <img src="fotos/1.jpg" alt="Anillo de compromiso" loading="lazy">
+      <div><b>$5,200.00</b>Anillo de compromiso  <br><small>Oro · 14k</small></div>
+    </a>
+    
+  </div>
+  <p class="vacio" id="sin-resultados" hidden>No hay prendas con esa búsqueda.</p>
   
 </main>
 <footer>Precios sujetos a disponibilidad. Casa de Empeño</footer>
