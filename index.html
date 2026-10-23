@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa de Empeño RIVERA · Prendas a la venta</title>
+<meta name="description" content="Prendas a la venta en Casa de Empeño RIVERA.">
+<meta property="og:title" content="Casa de Empeño RIVERA · Prendas a la venta">
+
+<style>
+:root { --fondo: #f6f6f3; --texto: #1f2328; --suave: #5f6670; --borde: #d9dbd6; --primario: #1f5f4a; --wa: #1f8f4e; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 16px/1.45 system-ui, "Segoe UI", Roboto, sans-serif; background: var(--fondo); color: var(--texto); }
+a { color: var(--primario); }
+header { background: var(--primario); color: #fff; padding: 18px 16px; }
+header a { color: #fff; text-decoration: none; }
+header h1 { margin: 0; font-size: 1.4rem; } header p { margin: 4px 0 0; opacity: .85; font-size: .9rem; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px 16px 48px; }
+.filtros { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.filtros input { flex: 1 1 220px; font: inherit; padding: 9px 12px; border: 1px solid var(--borde); border-radius: 8px; }
+.chip { font: inherit; font-size: .9rem; padding: 6px 12px; border: 1px solid var(--borde); border-radius: 999px; background: #fff; cursor: pointer; }
+.chip.activo { background: var(--primario); border-color: var(--primario); color: #fff; }
+.rejilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.articulo { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--borde); border-radius: 10px; overflow: hidden; color: inherit; text-decoration: none; }
+.articulo img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #eceee9; }
+.articulo div { padding: 10px 12px; } .articulo b { display: block; font-size: 1.15rem; } .articulo small { color: var(--suave); }
+.boton { display: inline-block; padding: 12px 20px; border-radius: 8px; background: var(--wa); color: #fff; text-decoration: none; font-weight: 600; }
+.ficha { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px; align-items: start; }
+.galeria img { width: 100%; border-radius: 10px; display: block; margin-bottom: 10px; background: #eceee9; }
+.precio { font-size: 1.8rem; font-weight: 700; margin: 6px 0 12px; }
+.detalles { white-space: pre-line; }
+dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; color: var(--suave); } dd { margin: 0; color: var(--texto); }
+footer { text-align: center; color: var(--suave); font-size: .85rem; padding: 24px 16px; }
+.vacio { padding: 40px 0; text-align: center; color: var(--suave); }
+@media (max-width: 700px) {
+  .rejilla { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .ficha { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html"><h1>Casa de Empeño RIVERA</h1></a>
+  <p>Prendas a la venta</p>
+</header>
+<main>
+  
+  <p class="vacio">Por ahora no hay prendas publicadas. Vuelve pronto.</p>
+  
+</main>
+<footer>Precios sujetos a disponibilidad. Casa de Empeño RIVERA</footer>
+<script>
+(function () {
+  const buscar = document.getElementById("buscar");
+  if (!buscar) return;
+  const articulos = Array.from(document.querySelectorAll(".articulo"));
+  let categoria = "";
+  function filtrar() {
+    const texto = buscar.value.trim().toLowerCase();
+    let visibles = 0;
+    articulos.forEach(a => {
+      const ver = (!categoria || a.dataset.categoria === categoria) && (!texto || a.dataset.texto.includes(texto));
+      a.hidden = !ver; visibles += ver;
+    });
+    document.getElementById("sin-resultados").hidden = visibles > 0;
+  }
+  buscar.addEventListener("input", filtrar);
+  document.querySelectorAll(".chip").forEach(chip => chip.addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach(c => c.classList.toggle("activo", c === chip));
+    categoria = chip.dataset.categoria; filtrar();
+  }));
+})();
+</script>
+</body>
+</html>
